@@ -1,0 +1,159 @@
+﻿-Projeto API(Application):
+    -Packages instaladas:
+        "Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.13"
+        "Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.14"
+        "Microsoft.EntityFrameworkCore" Version="5.0.5"
+        "Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.13"
+        "Microsoft.EntityFrameworkCore.Tools" Version="3.1.13"
+        "Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5"
+        "MySql.EntityFrameworkCore" Version="5.0.3"
+    -Dependecia de Projetos:
+        "..\GerenciadorFinanceiroDAL1\GerenciadorFinanceiroDAL.csproj"
+
+-Projeto BLL(Domain):
+    -Packages instaladas: vazio
+    -Dependencia de Projetos: vazio
+
+-Projeto DAL(Infra):
+    -Packages instaladas:
+        "Microsoft.EntityFrameworkCore" Version="5.0.5"
+    -Dependencia de Projetos:
+        "..\GerenciadorFinanceiroBLL\GerenciadorFinanceiroBLL.csproj"
+
+
+
+
+-Infra:
+    -Interfaces:
+        Genereica:
+        public interface IRepositorioGenerico<TEntity> where TEntity : class
+        {
+            IQueryable<TEntity> GetAll();
+            Task<TEntity> GetById(int id);
+            Task Insert(TEntity entity);
+            Task Update(TEntity entity);
+            Task Delete(int id);
+        }
+        Interface especifica da classe:
+        public interface IClasseRepositorio : IRepositorioGenerico<classe>
+    
+    -Mapeamentos:
+        public class ClasseMap : IEntityTypeConfiguration<Classe>
+        {
+            public void Configure(EntityTypeBuilder<Classe> builder)
+            {
+                builder.HasKey(r => r.Id);
+                builder.Property(r => r.Descricao).IsRequired(**se a coluna do banco aceitar valor nulo passar false como param**);
+
+                //A classe mapeada quando é ela que recebe a foreingh key, ex:
+                O registro de SaleRecord possui (HasOne )um vendedor que por sua vez tem varias(withMany) SaleRecord
+                builder.HasOne(s => s.Seller).WithMany(s => s.SalesRecords).HasForeignKey(s => s.SellerId);
+
+                //No mapeamento da classe que é a foreingh key fica assim:
+                O Seller possui muitas(Hasmany) SaleRecords que por usa vez tem um (WithOne) Seller
+                builder.HasMany(s => s.SalesRecords).WithOne(s => s.Seller);
+            }
+    
+    -Repositorios:
+        Generico:
+            public class RepositorioGenerico<TEntity> : IRepositorioGenerico<TEntity> where TEntity : class
+            {
+                private readonly Context _context;
+
+                GetAll(): _context.Set<TEntity>();
+                GetById(int id): await _context.Set<TEntity>().FindAsync(id);
+                Insert(TEntity entity): await _context.AddAsync(entity);
+                Update(TEntity entity): var registro = _context.Set<TEntity>().Update(entity);/registro.State = EntityState.Modified;
+                Delete(int id): var entity = await GetById(id);/ _context.Set<TEntity>().Remove(entity);
+                Após Insert, Update e Delete usar o comando await _context.SaveChangesAsync();
+            }
+        ClasseRepositorio:
+            public class ClasseRepositorio : RepositorioGenerico<Classe>, IClasseRepositorio
+            {
+                private readonly Context _context;
+
+                public DespesasRepositorio(Context context) : base(context)
+                {
+                    _context = context;
+                }
+
+                Caso for fazer query com os joins, precisa sobrescrever o metodo do repositorio generico com o new:
+                GetAll(): return  _context.SalesRecord.Include(s => s.Seller);
+                GetById(int id): var saleRecord = await _context.SalesRecord.Include(s => s.Seller).FirstOrDefaultAsync(s => s.Id == id);
+            }
+    -Context:
+            public class Context : DbContext
+            {
+                public Context(DbContextOptions<Context> options) : base(options)
+                {
+                }
+
+                public DbSet<Classe> Classe { get; set; }
+
+                protected override void OnModelCreating(ModelBuilder builder)
+                {
+                    builder.ApplyConfiguration(new ClasseMap());
+                    base.OnModelCreating(builder);
+                }
+            }
+            
+-Domain:
+    -Definição das Entitys:
+        A classe que recebe a foreign key tem um atributo da classe que é foreing key e o atributo do id dela,
+        Exemplo SaleRecord que recebe Seller:
+        public Seller Seller { get; set; }
+        public int SellerId { get; set; }
+
+        A classe que é foreign key tem ICollection<> da classe que ele fornece:
+        public ICollection<SalesRecord> SalesRecords { get; set; }
+
+    -Enums:
+        Traducao = Valor
+
+-Application:
+    -Controllers:
+        Get(): _departmentRepository.GetAll().ToListAsync(); ou retornar a lista se for uma ViewModel
+        Get(id): var department = await _departmentRepository.GetById(id);/ if (department == null) return NotFound()
+        Post(entity): if (ModelState.IsValid) Chama o repositorio e return Ok(new{messagem = $""}); senão BadRequest(entity)
+        Put(id, entity): if (id != department.Id) BadRequest /  if (ModelState.IsValid) Chama o repositorio e return Ok(new{messagem = $""}) / se não BadRequest(ModelState)
+        Delete(id): var department = await _departmentRepository.GetById(id) if (department == null) return NotFound / Chama o repositorio e return Ok(new{messagem = $""});
+
+    -appsettings.json:
+       "ConnectionStrings": {"Context": "server=localhost;userid=developer;password=1234567;database=gerenciamentofinanceiro"}
+
+    -Startup.cs:
+        -Metodo ConfigureServices:
+            services.AddDbContext<Context>(opcoes => opcoes.UseMySQL(Configuration.GetConnectionString("Context")));
+            services.AddScoped<IReceitasRepositorio, ReceitasRepositorio>();
+            services.AddSpaStaticFiles(diretorio =>
+            {
+                diretorio.RootPath = "ProjetoIndependente-UI";
+            });
+            services.AddCors();
+                        services.AddControllers()
+                .AddJsonOptions(opcoes => {
+                    opcoes.JsonSerializerOptions.IgnoreNullValues = true;
+                })
+                .AddNewtonsoftJson(opcoes => {
+                    opcoes.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
+
+        -Metodo Configure:
+            app.UseCors(opcoes => opcoes.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = Path.Combine(Directory.GetCurrentDirectory(), "ProjetoIndependente-UI");
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseProxyToSpaDevelopmentServer($"http://localhost:4200/");
+                }
+            });
+    
+
+
+
+
+

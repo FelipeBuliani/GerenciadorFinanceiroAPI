@@ -1,0 +1,9 @@
+C:\Users\felip\source\repos\GerenciadorFinanceiroAPI\GerenciadorFinanceiroBLL\bin\Debug\netcoreapp3.1\GerenciadorFinanceiroBLL.deps.json
+C:\Users\felip\source\repos\GerenciadorFinanceiroAPI\GerenciadorFinanceiroBLL\bin\Debug\netcoreapp3.1\GerenciadorFinanceiroBLL.dll
+C:\Users\felip\source\repos\GerenciadorFinanceiroAPI\GerenciadorFinanceiroBLL\bin\Debug\netcoreapp3.1\GerenciadorFinanceiroBLL.pdb
+C:\Users\felip\source\repos\GerenciadorFinanceiroAPI\GerenciadorFinanceiroBLL\obj\Debug\netcoreapp3.1\GerenciadorFinanceiroBLL.AssemblyInfoInputs.cache
+C:\Users\felip\source\repos\GerenciadorFinanceiroAPI\GerenciadorFinanceiroBLL\obj\Debug\netcoreapp3.1\GerenciadorFinanceiroBLL.AssemblyInfo.cs
+C:\Users\felip\source\repos\GerenciadorFinanceiroAPI\GerenciadorFinanceiroBLL\obj\Debug\netcoreapp3.1\GerenciadorFinanceiroBLL.csproj.CoreCompileInputs.cache
+C:\Users\felip\source\repos\GerenciadorFinanceiroAPI\GerenciadorFinanceiroBLL\obj\Debug\netcoreapp3.1\GerenciadorFinanceiroBLL.dll
+C:\Users\felip\source\repos\GerenciadorFinanceiroAPI\GerenciadorFinanceiroBLL\obj\Debug\netcoreapp3.1\GerenciadorFinanceiroBLL.pdb
+C:\Users\felip\source\repos\GerenciadorFinanceiroAPI\GerenciadorFinanceiroBLL\obj\Debug\netcoreapp3.1\GerenciadorFinanceiroBLL.csprojAssemblyReference.cache
