@@ -9,7 +9,7 @@ namespace GerenciadorFinanceiroDAL.Interfaces
     public interface IRepositorioGenerico<TEntity> where TEntity : class
     {
         IQueryable<TEntity> GetAll();
-        Task<TEntity> GetById();
+        Task<TEntity> GetById(int id);
         Task Insert(TEntity entity);
         Task Update(TEntity entity);
         Task Delete(int id);

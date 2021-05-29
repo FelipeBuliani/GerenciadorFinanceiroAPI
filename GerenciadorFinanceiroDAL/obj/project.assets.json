@@ -550,9 +550,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDALs.csproj",
-      "projectName": "GerenciadorFinanceiroDALs",
-      "projectPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDALs.csproj",
+      "projectUniqueName": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDAL.csproj",
+      "projectName": "GerenciadorFinanceiroDAL",
+      "projectPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDAL.csproj",
       "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\obj\\",
       "projectStyle": "PackageReference",

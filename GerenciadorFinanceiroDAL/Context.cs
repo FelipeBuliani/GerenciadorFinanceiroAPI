@@ -1,4 +1,4 @@
-﻿using GerenciadorFinanceiroBLL.models;
+﻿using GerenciadorFinanceiroBLL.Entitys;
 using GerenciadorFinanceiroDAL.Mapeamentos;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,15 +13,15 @@ namespace GerenciadorFinanceiroDAL
         {
         }
 
-        public DbSet<Receita> Receita { get; set; }
-        public DbSet<Despesa> Despesa { get; set; }
+        public DbSet<Receitas> Receitas { get; set; }
+        public DbSet<Despesas> Despesas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new ReceitasMap());
+            builder.ApplyConfiguration(new DespesasMap());
             base.OnModelCreating(builder);
 
-            builder.ApplyConfiguration(new ReceitaMap());
-            builder.ApplyConfiguration(new DespesaMap());
         }
     }
 }

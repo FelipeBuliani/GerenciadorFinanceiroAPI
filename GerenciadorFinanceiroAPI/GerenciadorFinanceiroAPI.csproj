@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GerenciadorFinanceiroDAL1\GerenciadorFinanceiroDAL.csproj" />
+    <ProjectReference Include="..\GerenciadorFinanceiroDAL\GerenciadorFinanceiroDAL.csproj" />
   </ItemGroup>
 
 

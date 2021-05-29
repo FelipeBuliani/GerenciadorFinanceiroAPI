@@ -9245,8 +9245,8 @@
     },
     "GerenciadorFinanceiroDAL/1.0.0": {
       "type": "project",
-      "path": "../GerenciadorFinanceiroDAL1/GerenciadorFinanceiroDAL.csproj",
-      "msbuildProject": "../GerenciadorFinanceiroDAL1/GerenciadorFinanceiroDAL.csproj"
+      "path": "../GerenciadorFinanceiroDAL/GerenciadorFinanceiroDAL.csproj",
+      "msbuildProject": "../GerenciadorFinanceiroDAL/GerenciadorFinanceiroDAL.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -9293,8 +9293,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL1\\GerenciadorFinanceiroDAL.csproj": {
-              "projectPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL1\\GerenciadorFinanceiroDAL.csproj"
+            "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDAL.csproj": {
+              "projectPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDAL.csproj"
             }
           }
         }

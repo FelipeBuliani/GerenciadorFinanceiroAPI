@@ -32,8 +32,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL1\\GerenciadorFinanceiroDAL.csproj": {
-                "projectPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL1\\GerenciadorFinanceiroDAL.csproj"
+              "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDAL.csproj": {
+                "projectPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDAL.csproj"
               }
             }
           }
@@ -159,14 +159,14 @@
         }
       }
     },
-    "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL1\\GerenciadorFinanceiroDAL.csproj": {
+    "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL1\\GerenciadorFinanceiroDAL.csproj",
+        "projectUniqueName": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDAL.csproj",
         "projectName": "GerenciadorFinanceiroDAL",
-        "projectPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL1\\GerenciadorFinanceiroDAL.csproj",
+        "projectPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\GerenciadorFinanceiroDAL.csproj",
         "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL1\\obj\\",
+        "outputPath": "C:\\Users\\felip\\source\\repos\\GerenciadorFinanceiroAPI\\GerenciadorFinanceiroDAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
